@@ -80,7 +80,7 @@ def check_response(response):
 
 def parse_status(homework):
     """Получение статуса домашней работы."""
-    logger.info('Получение статуса домашней работы')    
+    logger.info('Получение статуса домашней работы')
     homework_name = homework.get('homework_name')
     try:
         homework_name = homework['homework_name']
