@@ -38,6 +38,7 @@ HOMEWORK_STATUSES = {
 def send_message(bot, message):
     """Отправка сообщений в диалог."""
     try:
+        logger.info('Попытка создания сообщения')
         bot.send_message(chat_id=TELEGRAM_CHAT_ID, text=message)
         logger.info(f'Сообщение в чат {TELEGRAM_CHAT_ID}: {message}')
     except telegram.error.TelegramError as error:
@@ -46,6 +47,7 @@ def send_message(bot, message):
 
 def get_api_answer(current_timestamp):
     """Возвращает ответ API приведенный в json."""
+    logger.info('Попытка сервера получить ответ от API')
     timestamp = current_timestamp or int(time.time())
     params = {'from_date': timestamp}
     try:
@@ -78,6 +80,7 @@ def check_response(response):
 
 def parse_status(homework):
     """Получение статуса домашней работы."""
+    logger.info('Получение статуса домашней работы')    
     homework_name = homework.get('homework_name')
     try:
         homework_name = homework['homework_name']
